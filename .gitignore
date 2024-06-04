@@ -1,2 +1,5 @@
 .DS_Store
 scripts/.idea/
+scripts/test/.ipynb_checkpoints/
+scripts/test/geckodriver.log
+
