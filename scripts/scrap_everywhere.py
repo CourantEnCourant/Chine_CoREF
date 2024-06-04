@@ -38,10 +38,6 @@ def main(start_url: str, output_file: Path, limit: int) -> None:
         else:
             urls_raw = scrap(url, wd, limit)
 
-
-
-
-
     print(f'Writing results to {output_file}.')
     with open(output_file, 'w') as file:
         for url in urls_relevant:
