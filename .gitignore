@@ -2,4 +2,6 @@
 scripts/.idea/
 scripts/test/.ipynb_checkpoints/
 scripts/test/geckodriver.log
+src/
+data/
 
