@@ -5,3 +5,5 @@ scripts/test/geckodriver.log
 src/
 data/
 .idea/
+.tmp.driveupload/
+scripts/__pycache__/
