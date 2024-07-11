@@ -16,7 +16,8 @@ scripts/test/geckodriver.log
 .tmp.driveupload/
 
 # Data
-data/
+data/*
+!data/
 !data/raw/
 
 # Models
