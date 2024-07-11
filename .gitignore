@@ -1,9 +1,23 @@
+# System files
 .DS_Store
-scripts/.idea/
-scripts/test/.ipynb_checkpoints/
-scripts/test/geckodriver.log
-src/
-data/
-.idea/
-.tmp.driveupload/
+
+# Pycharm files
 scripts/__pycache__/
+scripts/.idea/
+.idea/
+
+# Jupyter files
+scripts/test/.ipynb_checkpoints/
+
+# Selenium files
+scripts/test/geckodriver.log
+
+# Google Drive files
+.tmp.driveupload/
+
+# Data
+data/
+!data/raw/
+
+# Models
+src/
