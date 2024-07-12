@@ -17,11 +17,9 @@ scripts/test/geckodriver.log
 
 # Data
 data/raw/*
-!data/raw/
 
 # Models
 src/*
-!src/
 
 #gitkeep
-**/*.gitkeep
+!**/*.gitkeep
