@@ -7,10 +7,10 @@ scripts/.idea/
 .idea/
 
 # Jupyter files
-scripts/test/.ipynb_checkpoints/
+scripts/.ipynb_checkpoints/
 
 # Selenium files
-scripts/test/geckodriver.log
+scripts/geckodriver.log
 
 # Google Drive files
 .tmp.driveupload/
