@@ -20,4 +20,8 @@ data/raw/*
 !data/raw/
 
 # Models
-src/
+src/*
+!src/
+
+#gitkeep
+**/*.gitkeep
