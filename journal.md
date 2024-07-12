@@ -1,7 +1,3 @@
-# 03/06/2024
-
 ## Weiqi
 
-email: webmail cnrs
-janus: https://intranet.cnrs.fr/
-humanum: 
+- [zoom meeting](https://cnrs.zoom.us/j/94569285893?pwd=OG83YVFzL1FRUVhTOURsdTg4NC9Ddz09)
