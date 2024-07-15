@@ -80,6 +80,7 @@ def main(positive, negative, output_folder, threshold, percentage):
     combined_shuffled = label_combine_and_shuffle(positive_preprocessed, negative_preprocessed)
     dataset = Dataset.from_pandas(combined_shuffled)
     # 3.
+    # This solution is not ideal cuz the split reshuffles the dataset. In future use pandas to split instead of datasets
     train, dev, test = split_train_dev_test(dataset, percentage)
     # 4.
     train.to_parquet(f'{output_folder}/train.parquet', compression='snappy')
@@ -90,9 +91,9 @@ def main(positive, negative, output_folder, threshold, percentage):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='Clean raw data, generate dataset ready to train.')
-    parser.add_argument('-p', '--positive', default='../data/raw/protest_posts.csv', type=Path, help='Path to positive set')
-    parser.add_argument('-n', '--negative', default='../data/raw/WeiboSentiment2019.csv', type=Path, help='Path to negative set. Will have the same size as positive set.')
-    parser.add_argument('-o', '--output_folder', default='../data/clean', type=Path, help='Folder to write output .parquet files.')
+    parser.add_argument('positive', type=Path, help='Path to positive set')
+    parser.add_argument('negative', type=Path, help='Path to negative set. Will have the same size as positive set.')
+    parser.add_argument('output_folder', type=Path, help='Folder to write output .parquet files.')
     parser.add_argument('-t', '--threshold', metavar='', default=0.6, type=float, help='Threshold for tweets above certain probabilities. Default set to 0.6.')
     parser.add_argument('-pct', '--percentage', metavar='', default=0.8, type=float, help='Percentage of training set. Default set to 0.8. Dev and test have equal size from the rest.')
 
