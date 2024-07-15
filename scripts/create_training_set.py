@@ -23,8 +23,8 @@ def preprocess_negative(negative: Path, size: int) -> DataFrame:
     """Negative set will have the same size and format as the positive set"""
     df_negative = pd.read_csv(negative, sep=',')
     df_negative_resized = df_negative.sample(n=size, random_state=42)
-    negative_preprocessed = df_negative_resized['seged_weibo'].to_frame()
-    negative_preprocessed = negative_preprocessed['seged_weibo'].str.replace(' ', '', regex=False)
+    negative_preprocessed = df_negative_resized['seged_weibo']
+    negative_preprocessed = negative_preprocessed.str.replace(' ', '', regex=False).to_frame()
 
     return negative_preprocessed
 
