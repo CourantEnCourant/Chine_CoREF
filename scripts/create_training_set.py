@@ -31,11 +31,12 @@ def preprocess_negative(negative: Path, size: int) -> DataFrame:
 
 def give_label(df_tweets: DataFrame, label: str) -> DataFrame:
     """Label a dataframe with following headers: tweets, label_id and label"""
-    df_tweets.columns = ['tweets']
-    df_tweets['label'] = label
-    df_tweets['label_id'] = label2id[label]
+    df_copy = df_tweets.copy()
+    df_copy.columns.values[0] = ['tweets']
+    df_copy['label'] = label
+    df_copy['label_id'] = label2id[label]
 
-    return df_tweets
+    return df_copy
 
 
 def label_combine_and_shuffle(positive_preprocessed: DataFrame, negative_preprocessed: DataFrame) -> DataFrame:
