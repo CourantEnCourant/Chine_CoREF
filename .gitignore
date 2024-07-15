@@ -14,9 +14,10 @@ scripts/geckodriver.log
 
 # Google Drive files
 .tmp.driveupload/
+.tmp.drivedownload/
 
 # Data
-data/raw/*
+data/*
 
 # Models
 src/*
