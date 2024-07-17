@@ -76,12 +76,17 @@ def main(positive, negative, output_folder, threshold, percentage):
     positive_preprocessed = preprocess_positive(positive, threshold)
     size = len(positive_preprocessed)
     negative_preprocessed = preprocess_negative(negative, size)
+    print(f'Size of positive/negative set: {size}')  # Consider using log modules
     # 2.
     combined_shuffled = label_combine_and_shuffle(positive_preprocessed, negative_preprocessed)
     dataset = Dataset.from_pandas(combined_shuffled)
     # 3.
-    # This solution is not ideal cuz the split reshuffles the dataset. In future use pandas to split instead of datasets
+    # This solution is not ideal cuz the split reshuffles the dataset. Consider using pandas to split datasets
     train, dev, test = split_train_dev_test(dataset, percentage)
+    train_size, dev_size, test_size = len(train), len(dev), len(test)
+    print(f"""Train size: {train_size}
+    dev size: {dev_size}
+    test size: {test_size}""")
     # 4.
     train.to_parquet(f'{output_folder}/train.parquet', compression='snappy')
     dev.to_parquet(f'{output_folder}/dev.parquet', compression='snappy')
