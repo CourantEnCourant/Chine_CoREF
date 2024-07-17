@@ -1,3 +1,13 @@
+# Data
+data/*
+
+# Models
+src/*
+
+# Training files
+scripts/logs/
+scripts/test-trainer/
+
 # System files
 .DS_Store
 
@@ -15,12 +25,6 @@ scripts/geckodriver.log
 # Google Drive files
 .tmp.driveupload/
 .tmp.drivedownload/
-
-# Data
-data/*
-
-# Models
-src/*
 
 #gitkeep
 !**/*.gitkeep
