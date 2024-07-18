@@ -84,9 +84,7 @@ def main(positive, negative, output_folder, threshold, percentage):
     # This solution is not ideal cuz the split reshuffles the dataset. Consider using pandas to split datasets
     train, dev, test = split_train_dev_test(dataset, percentage)
     train_size, dev_size, test_size = len(train), len(dev), len(test)
-    print(f"""Train size: {train_size}
-    dev size: {dev_size}
-    test size: {test_size}""")
+    print(f"""Train size: {train_size}\ndev size: {dev_size}\ntest size: {test_size}""")
     # 4.
     train.to_parquet(f'{output_folder}/train.parquet', compression='snappy')
     dev.to_parquet(f'{output_folder}/dev.parquet', compression='snappy')
