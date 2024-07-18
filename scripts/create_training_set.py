@@ -70,7 +70,7 @@ def split_train_dev_test(dataset: Dataset, percentage: float) -> Tuple[Dataset, 
 def main(positive, negative, output_folder, threshold, percentage):
     """1. Generate positive and negative sets,
     2. Combine and shuffle them,
-    3. Split into test/dev/train,
+    3. Split into train/dev/test,
     4. Output to .parquet"""
     # 1.
     positive_preprocessed = preprocess_positive(positive, threshold)
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     parser.add_argument('negative', type=Path, help='Path to negative set. Will have the same size as positive set.')
     parser.add_argument('output_folder', type=Path, help='Folder to write output .parquet files.')
     parser.add_argument('-t', '--threshold', metavar='', default=0.6, type=float, help='Threshold for tweets above certain probabilities. Default set to 0.6.')
-    parser.add_argument('-pct', '--percentage', metavar='', default=0.8, type=float, help='Percentage of training set. Default set to 0.8. Dev and test have equal size from the rest.')
+    parser.add_argument('-p', '--percentage', metavar='', default=0.8, type=float, help='Percentage of training set. Default set to 0.8. Dev and test have equal size from the rest.')
 
     args = parser.parse_args()
 
