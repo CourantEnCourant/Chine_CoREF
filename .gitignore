@@ -18,6 +18,7 @@ scripts/.idea/
 
 # Jupyter files
 scripts/.ipynb_checkpoints/
+.ipynb_checkpoints/
 
 # Selenium files
 scripts/geckodriver.log
@@ -25,6 +26,9 @@ scripts/geckodriver.log
 # Google Drive files
 .tmp.driveupload/
 .tmp.drivedownload/
+
+#virtual env
+.coref/
 
 #gitkeep
 !**/*.gitkeep
