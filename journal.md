@@ -4,3 +4,4 @@
 
 - Augmenter le threshold pour avoir une meilleure qualité de dataset
 - Augmenter la taille du test set pour avoir une évaluation plus fiable
+- Pour publier le model : Zenodo pour l'archivage à long terme 
