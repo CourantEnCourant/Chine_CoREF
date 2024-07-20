@@ -1,9 +1,10 @@
-## Weiqi
+# 20/07
+
+- Set the threshold higher to have a better quality dataset
+- Use a bigger test set to have more robust test
+- Publish model to Zenodo and HuggingFace
+- Consider using typeguard for type check next time
+
+# 01/06
 
 - [zoom meeting](https://cnrs.zoom.us/j/94569285893?pwd=OG83YVFzL1FRUVhTOURsdTg4NC9Ddz09)
-
-- Augmenter le threshold pour avoir une meilleure qualité de dataset
-- Augmenter la taille du test set pour avoir une évaluation plus fiable
-- Pour publier le model : Zenodo pour l'archivage à long terme
-
-- Consider using typeguard for type check next time
