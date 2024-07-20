@@ -48,15 +48,16 @@ def label_combine_and_shuffle(positive_preprocessed: DataFrame, negative_preproc
     combined_preprocessed = pd.concat([positive_labeled, negative_labeled], ignore_index=True)
 
     # Shuffle and provide index
-    combined_shuffled = combined_preprocessed.sample(frac=1).reset_index(drop=True)
+    combined_shuffled = combined_preprocessed.sample(frac=1, random_state=1453).reset_index(drop=True)
     combined_shuffled['idx'] = range(len(combined_shuffled))
 
     return combined_shuffled
 
 
 def split_train_dev_test(dataset: Dataset, percentage: float) -> Tuple[Dataset, Dataset, Dataset]:
+    # Warning: This solution is not ideal cuz the split reshuffles. Consider using pandas to split
     # Train
-    train_dev_test = dataset.train_test_split(train_size=percentage)
+    train_dev_test = dataset.train_test_split(train_size=train_percentage)
     train = train_dev_test['train']
 
     # Dev and test, will have the same size
@@ -81,7 +82,6 @@ def main(positive, negative, output_folder, threshold, percentage):
     combined_shuffled = label_combine_and_shuffle(positive_preprocessed, negative_preprocessed)
     dataset = Dataset.from_pandas(combined_shuffled)
     # 3.
-    # This solution is not ideal cuz the split reshuffles the dataset. Consider using pandas to split datasets
     train, dev, test = split_train_dev_test(dataset, percentage)
     train_size, dev_size, test_size = len(train), len(dev), len(test)
     print(f"""Train size: {train_size}\ndev size: {dev_size}\ntest size: {test_size}""")
