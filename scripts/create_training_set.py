@@ -54,21 +54,21 @@ def label_combine_and_shuffle(positive_preprocessed: DataFrame, negative_preproc
     return combined_shuffled
 
 
-def split_train_dev_test(dataset: Dataset, percentage: float) -> Tuple[Dataset, Dataset, Dataset]:
+def split_train_dev_test(dataset: Dataset, train_percentage: float, dev_percentage: float) -> Tuple[Dataset, Dataset, Dataset]:
     # Warning: This solution is not ideal cuz the split reshuffles. Consider using pandas to split
     # Train
     train_dev_test = dataset.train_test_split(train_size=train_percentage)
     train = train_dev_test['train']
 
     # Dev and test, will have the same size
-    dev_test = train_dev_test['test'].train_test_split(train_size=0.5)
+    dev_test = train_dev_test['test'].train_test_split(train_size=dev_percentage)
     dev = dev_test['train']
     test = dev_test['test']
 
     return train, dev, test
 
 
-def main(positive, negative, output_folder, threshold, percentage):
+def main(positive, negative, output_folder, threshold, train_percentage, dev_percentage):
     """1. Generate positive and negative sets,
     2. Combine and shuffle them,
     3. Split into train/dev/test,
@@ -82,7 +82,7 @@ def main(positive, negative, output_folder, threshold, percentage):
     combined_shuffled = label_combine_and_shuffle(positive_preprocessed, negative_preprocessed)
     dataset = Dataset.from_pandas(combined_shuffled)
     # 3.
-    train, dev, test = split_train_dev_test(dataset, percentage)
+    train, dev, test = split_train_dev_test(dataset, train_percentage, dev_percentage)
     train_size, dev_size, test_size = len(train), len(dev), len(test)
     print(f"""Train size: {train_size}\ndev size: {dev_size}\ntest size: {test_size}""")
     # 4.
@@ -94,11 +94,18 @@ def main(positive, negative, output_folder, threshold, percentage):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='Clean raw data, generate dataset ready to train.')
-    parser.add_argument('positive', type=Path, help='Path to positive set')
-    parser.add_argument('negative', type=Path, help='Path to negative set. Will have the same size as positive set.')
-    parser.add_argument('output_folder', type=Path, help='Folder to write output .parquet files.')
-    parser.add_argument('-t', '--threshold', metavar='', default=0.6, type=float, help='Threshold for tweets above certain probabilities. Default set to 0.6.')
-    parser.add_argument('-p', '--percentage', metavar='', default=0.8, type=float, help='Percentage of training set. Default set to 0.8. Dev and test have equal size from the rest.')
+    parser.add_argument('positive', type=Path,
+                        help='Path to positive set')
+    parser.add_argument('negative', type=Path,
+                        help='Path to negative set. Will have the same size as positive set.')
+    parser.add_argument('output_folder', type=Path,
+                        help='Folder to write output .parquet files.')
+    parser.add_argument('-t', '--threshold', metavar='', default=0.6, type=float,
+                        help='Threshold for tweets above certain probabilities. Default set to 0.6.')
+    parser.add_argument('-tp', '--train_percentage', metavar='', default=0.8, type=float,
+                        help='Percentage of training set. Default set to 0.8.')
+    parser.add_argument('-dp', '--dev_percentage', metavar='', default=0.5, type=float,
+                        help='Percentage of dev set from the rest. Default set to 0.5.')
 
     args = parser.parse_args()
 
@@ -107,7 +114,7 @@ if __name__ == '__main__':
         raise ValueError('Output folder should be a folder.')
     if not 0 < args.threshold < 1:
         raise ValueError('Threshold should be between 0 and 1')
-    if not 0 < args.percentage < 1:
+    if not 0 < args.train_percentage < 1 or 0 < args.dev_percentage < 1:
         raise ValueError('Percentage should be between 0 and 1')
 
     main(
@@ -115,5 +122,6 @@ if __name__ == '__main__':
         negative=args.negative,
         output_folder=args.output_folder,
         threshold=args.threshold,
-        percentage=args.percentage,
+        train_percentage=args.train_percentage,
+        dev_percentage=args.dev_percentage
     )
