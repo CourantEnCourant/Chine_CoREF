@@ -114,7 +114,7 @@ if __name__ == '__main__':
         raise ValueError('Output folder should be a folder.')
     if not 0 < args.threshold < 1:
         raise ValueError('Threshold should be between 0 and 1')
-    if not 0 < args.train_percentage < 1 or 0 < args.dev_percentage < 1:
+    if not (0 < args.train_percentage < 1 or 0 < args.dev_percentage < 1):
         raise ValueError('Percentage should be between 0 and 1')
 
     main(
