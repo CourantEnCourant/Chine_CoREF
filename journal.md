@@ -1,6 +1,6 @@
 # 20/07
 
-- Set the threshold higher to have a better quality dataset
+- Set the threshold higher to have a better quality dataset (we use 0.85)
 - Use a bigger test set to have more robust test
 - Publish model to Zenodo and HuggingFace
 - Consider using typeguard for type check next time
