@@ -8,3 +8,6 @@
 # 01/06
 
 - [zoom meeting](https://cnrs.zoom.us/j/94569285893?pwd=OG83YVFzL1FRUVhTOURsdTg4NC9Ddz09)
+- [Jupyter Lab server](https://jha-tools.huma-num.fr/)
+- [CC-IN2P3](https://r-tools.huma-num.fr/)
+- [Another server](https://id.cc.in2p3.fr/)
