@@ -1,0 +1,34 @@
+# Data
+data/*
+
+# Models
+src/*
+
+# Training files
+scripts/logs/
+scripts/test-trainer/
+
+# System files
+.DS_Store
+
+# Pycharm files
+scripts/__pycache__/
+scripts/.idea/
+.idea/
+
+# Jupyter files
+scripts/.ipynb_checkpoints/
+.ipynb_checkpoints/
+
+# Selenium files
+scripts/geckodriver.log
+
+# Google Drive files
+.tmp.driveupload/
+.tmp.drivedownload/
+
+#virtual env
+.coref/
+
+#gitkeep
+!**/*.gitkeep
