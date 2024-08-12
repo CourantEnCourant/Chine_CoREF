@@ -1,0 +1,10 @@
+datasets==2.20.0
+evaluate==0.4.2
+matplotlib==3.7.0
+numpy==1.23.5
+pandas==1.5.3
+scipy==1.10.0
+torch==1.12.1
+torch==2.5.0.dev20240718+cu124
+transformers==4.24.0
+transformers==4.42.4
