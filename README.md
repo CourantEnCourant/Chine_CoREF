@@ -31,7 +31,7 @@ Below, we describe the steps required for reproducing our training process
 ### Download datasets
 For positive set, download Jennifer Pan's dataset from [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/SS4LNN) and put `protest_posts.csv` at `./data/raw/`
 
-For negative set, download [senti-weibo](https://drive.google.com/file/d/1yMCP44ICH1Gl29x920QyT9LQCnVg_2S6/view) from [this github repo](https://github.com/wansho/senti-weibo?tab=readme-ov-file)
+For negative set, download [senti-weibo](https://drive.google.com/file/d/1yMCP44ICH1Gl29x920QyT9LQCnVg_2S6/view) from [this github repo](https://github.com/wansho/senti-weibo?tab=readme-ov-file) and it at `./data/raw/`
 
 ### Prepare datasets
 Run ```generate_positive.ipynb``` to generate positive set
